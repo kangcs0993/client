@@ -27,3 +27,36 @@ export async function signIn(email, password){
 
     return await res.json();
 }
+
+export async function updateProfile(editedProfile){
+    const res = await fetch(`${server}/users/user`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application.json",
+            "Authorization": getBearerToken()
+        },
+        body: JSON.stringify(editedProfile)
+    });
+
+    if(!res.ok){
+        throw new Error(res.statusText + "error");
+    }
+
+    return await res.json();
+}
+
+export async function updateAvatar(formData){
+    const res = await fetch(`${server}/users/user`, {
+        method: "PUT",
+        headers: {
+            "Authorization": getBearerToken()
+        },
+        body: formData
+    });
+
+    if(!res.ok){
+        throw new Error(res.statusText + "error");
+    }
+
+    return await res.json();
+}
