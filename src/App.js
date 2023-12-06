@@ -1,4 +1,4 @@
-import {BorwserRouter as Router, Routes, Route} from "react-router-dom";
+import { BorwserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthProvider from "./components/auth/AuthProvider";
 import AuthRequired from "./components/auth/AuthRequired";
 import Layout from "./components/Layout";
@@ -14,21 +14,20 @@ import Following from "./components/follow/Following";
 import ProfileEdit from "./components/ProfileEdit";
 import NotFound from "./components/NotFound";
 
-export default function App(){
-	return(
+
+export default function App() {
+	return (
 		<Router>
 			<AuthProvider>
 				<Routes>
 					<Route path="/"
-						   element={
-							<AuthRequired>
-								<Layout></Layout>
-							</AuthRequired>
-						   }>
+						element={<AuthRequired>
+							<Layout></Layout>
+						</AuthRequired>}>
 						<Route index element={<Feed></Feed>}></Route>
 						<Route path="explore" element={<Explore></Explore>}></Route>
 						<Route path="p/:id">
-							<Route index element={<PostView}></Route>
+							<Route index element={<PostView />}></Route>
 							<Route path="comments" element={<Comments></Comments>}></Route>
 						</Route>
 						<Route path="profiles/:username">
@@ -45,5 +44,5 @@ export default function App(){
 				</Routes>
 			</AuthProvider>
 		</Router>
-	)
+	);
 }
