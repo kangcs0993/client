@@ -1,4 +1,4 @@
-import { BorwserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthProvider from "./components/auth/AuthProvider";
 import AuthRequired from "./components/auth/AuthRequired";
 import Layout from "./components/Layout";
@@ -38,8 +38,8 @@ export default function App() {
 						<Route path="accounts/edit" element={<ProfileEdit></ProfileEdit>}></Route>
 					</Route>
 
-					<Route path="account/login" element={<Login></Login>}></Route>
-					<Route path="account/signup" element={<SignUp></SignUp>}></Route>
+					<Route path="accounts/login" element={<Login></Login>}></Route>
+					<Route path="accounts/signup" element={<SignUp></SignUp>}></Route>
 					<Route path="*" element={<NotFound></NotFound>}></Route>
 				</Routes>
 			</AuthProvider>
