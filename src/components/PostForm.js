@@ -93,6 +93,4 @@ export default function PostForm(){
             </div>
         </form>
     )
-
-
 }
