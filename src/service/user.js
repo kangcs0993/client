@@ -32,7 +32,7 @@ export async function updateProfile(editedProfile){
     const res = await fetch(`${server}/users/user`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application.json",
+            "Content-Type": "application/json",
             "Authorization": getBearerToken()
         },
         body: JSON.stringify(editedProfile)

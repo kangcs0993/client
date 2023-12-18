@@ -12,7 +12,7 @@ export default function Profile(){
     const {user, setUser} = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
     const [posts, setPosts] = useState([]);
-    const {modalOpen, setModalOpen} = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -62,8 +62,19 @@ export default function Profile(){
         </PostItem>
     ));
 
-    console.log("...")
-    console.log(timeline)
+    const modal = (
+        <div className="fixed inset-0 bg-black/[0.2] z-10"
+             onClick={(e) => {
+                if(e.target === e.currentTarget){
+                    setModalOpen(false);
+                }
+             }}
+        >
+            <PostForm></PostForm>
+        </div>
+    )
+
+
 
     if(!profile){
         return <Spinner></Spinner>
@@ -95,6 +106,16 @@ export default function Profile(){
             ) : (
                 <p className="text-center">no posts</p>
             )}
+
+            <svg className="opacity-40 w-12 fixed right-8 bottom-8 hover:opacity-80 cursor-pointer z-10"
+                 xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 512 512"
+                 onClick={() => setModalOpen(true)}
+            >
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+            </svg>
+
+            {modalOpen && modal}
         </>
     )
 }
