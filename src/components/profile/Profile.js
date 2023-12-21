@@ -74,8 +74,6 @@ export default function Profile(){
         </div>
     )
 
-
-
     if(!profile){
         return <Spinner></Spinner>
     }

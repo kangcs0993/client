@@ -60,6 +60,18 @@ export default function ProfileInfo({
                       className="block text-sm"
                 >
                     <span className="font-semibold">
+                        {followerCount}
+                    </span>
+                    {" "}
+                    followers
+                </Link>
+            </li>
+
+            <li className="w-1/3">
+                <Link to={`/profiles/${username}/followers`}
+                      className="block text-sm"
+                >
+                    <span className="font-semibold">
                         {followingCount}
                     </span>
                     {" "}
