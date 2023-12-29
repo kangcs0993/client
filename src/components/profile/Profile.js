@@ -37,15 +37,31 @@ export default function Profile(){
     }
 
     async function handleFollow(){
+        try{
+            await follow(username);
 
+            setProfile({...profile, isFollowing: true});
+        }catch(error){
+            alert(error);
+        }
     };
 
     async function handleUnfollow(){
+        try{
+            await unfollow(username)
 
+            setProfile({...profile, isFollowing: false});
+        }catch(error){
+            alert(error);
+        }
     };
 
     async function handleSignOut(){
+        const confirmed = window.confirm("logout?");
 
+        if(confirmed){
+            setUser(null);
+        }
     };
 
     useEffect(() => {
@@ -88,9 +104,9 @@ export default function Profile(){
                          followerCount={profile.followerCount}
                          followingCount={profile.followingCount}
                          isFollowing={profile.isFollowing}
-                         handleSignOut={profile.handleSignOut}
-                         handleFollow={profile.handleFollow}
-                         handleUnfollow={profile.handleUnfollow}
+                         handleSignOut={handleSignOut}
+                         handleFollow={handleFollow}
+                         handleUnfollow={handleUnfollow}
                          isMaster={user.username === username}
             >
             </ProfileInfo>
